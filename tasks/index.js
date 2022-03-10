@@ -62,5 +62,3 @@ task('donatedByAddress', 'donated by specific address') // npx hardhat donatedBy
       .call({ from: '0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266' })
       .then((result) => console.log(result));
   });
-
-module.exports = {};
