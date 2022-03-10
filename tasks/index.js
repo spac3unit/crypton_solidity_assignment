@@ -21,7 +21,9 @@ task("donate", "send funds to Donations contract")
 
 task("getContractBalance", "Prints an contract's balance")
 	.setAction(async () => {
-		await DonationContract.methods.getContractBalance().call().then(console.log)
+		await DonationContract.methods.getContractBalance()
+            .call()
+            .then(balance => console.log(balance.toString()))
 			
 	});
 
