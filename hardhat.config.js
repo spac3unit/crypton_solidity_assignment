@@ -1,6 +1,7 @@
 require('dotenv').config();
 require('@nomiclabs/hardhat-waffle');
 require('@nomiclabs/hardhat-web3');
+require('@nomiclabs/hardhat-etherscan');
 
 require('./tasks/index.js');
 
@@ -25,5 +26,8 @@ module.exports = {
       url: `https://eth-rinkeby.alchemyapi.io/v2/${process.env.ALCHEMY_API_KEY}`,
       accounts: [process.env.RINKEBY_PRIVATE_KEY],
     },
+  },
+  etherscan: {
+    apiKey: process.env.ETHERSCAN_API_KEY,
   },
 };
