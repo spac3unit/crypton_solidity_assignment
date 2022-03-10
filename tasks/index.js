@@ -17,10 +17,9 @@ task('makeDonation', 'send funds to Donations contract')
   .addParam('account', 'Account address from which you want to pay')
   .addParam('amount', 'Amount of funds')
   .setAction(async (taskArgs) => {
-    const amount = web3.utils.toWei(taskArgs.amount);
     await DonationContract.methods
       .makeDonation()
-      .send({ from: taskArgs.account, value: amount });
+      .send({ from: taskArgs.account, value: taskArgs.amount });
   });
 
 task('getContractBalance', "Prints an contract's balance").setAction(
