@@ -45,21 +45,13 @@ task('withdraw', 'Wiwthdraw some amount of funds') // npx hardhat withdraw
   .setAction(async (taskArgs) => {
     await DonationContract.methods
       .withdraw('0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266', 300)
-      .send({ from: '0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266' })
-      .on('receipt', function (receipt) {
-        console.log(receipt);
-      });
+      .send({ from: '0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266' });
   });
 
 task('withdrawAll', 'Wiwthdraw some amount of funds') // npx hardhat withdraw
   .addParam('to', 'The account to which you want to send funds')
   .setAction(async (taskArgs) => {
-    await DonationContract.methods
-      .withdrawAll()
-      .send({ to: taskArgs.to })
-      .on('receipt', function (receipt) {
-        console.log(receipt);
-      });
+    await DonationContract.methods.withdrawAll().send({ to: taskArgs.to });
   });
 
 // I wasted a lot of time, but could not figure out how to pass arguments from the command line to a contract function
