@@ -5,7 +5,7 @@ const { abi } = require('../artifacts/contracts/Donations.sol/Donations');
 const Web3 = require('web3');
 const web3 = new Web3(
   new Web3.providers.HttpProvider(
-    process.env.PROVIDER_URL || 'http://127.0.0.1:8545/'
+    process.env.LOCALHOST_NETWORK_URL || 'http://127.0.0.1:8545/'
   )
 );
 const DonationContract = new web3.eth.Contract(
@@ -38,7 +38,7 @@ task('getDonatersList', 'Prints all donators addresses').setAction(async () => {
     .then((result) => console.log(result));
 });
 
-// I wasted a lot of time, but could not figure out how to pass arguments from the command line to a contract function
+// Could not figure out how to pass arguments from the command line to a contract function, got some errors
 // So I hardcoded them :(
 task('withdraw', 'Wiwthdraw some amount of funds') // npx hardhat withdraw
   .setAction(async (taskArgs) => {
@@ -53,7 +53,7 @@ task('withdrawAll', 'Wiwthdraw some amount of funds') // npx hardhat withdraw
     await DonationContract.methods.withdrawAll().send({ to: taskArgs.to });
   });
 
-// I wasted a lot of time, but could not figure out how to pass arguments from the command line to a contract function
+// Could not figure out how to pass arguments from the command line to a contract function, got some errors
 // So I hardcoded them :(
 task('donatedByAddress', 'donated by specific address') // npx hardhat donatedByAddress
   .setAction(async (taskArgs) => {
