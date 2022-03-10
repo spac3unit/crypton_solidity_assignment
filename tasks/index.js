@@ -32,10 +32,7 @@ task('getContractBalance', "Prints an contract's balance").setAction(
   }
 );
 
-task(
-  'getDonatersList',
-  'Prints all donators addresses who donated to contract'
-).setAction(async () => {
+task('getDonatersList', 'Prints all donators addresses').setAction(async () => {
   await DonationContract.methods
     .getDonatersList()
     .call()
